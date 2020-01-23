@@ -54,27 +54,6 @@ MainConfig mainConfig = MainConfig();
 
           ])
           ),
-          /*child: Row(
-             children: <Widget>[
-               Expanded(
-                 //todo
-                 child: Image.network('https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/5a604a76879045.5c76ccf6c985f.png',
-                   fit: BoxFit.fitHeight,
-                  // width: double.infinity,
-                   height: 300,
-                 ),
-               ),
-               Expanded(
-                 flex: 1,
-                 //todo
-                 child: Image.network('https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/f1c7fc74565807.5c37135e961b7.png',
-                   fit: BoxFit.fitHeight,
-                  // width: double.infinity,
-                   height: 300,
-                 ),
-               ),
-             ],
-          ),*/
         ),
 
         Container(
@@ -200,7 +179,6 @@ MainConfig mainConfig = MainConfig();
             ],
           ),
         ),
-
 
         Container(
           padding: EdgeInsets.only(left: 10, right: 10, top: 5),
