@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hw_1/feed_widget.dart';
 import 'package:flutter_hw_1/main_bottom_bar.dart';
 import 'package:flutter_hw_1/post_widget.dart';
 
@@ -44,7 +45,12 @@ class _MyHomePageState extends State<MyHomePage> {
             Icons.arrow_back_ios,
             color: Colors.grey,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FeedWidget()),
+            );
+          },
         ),
         centerTitle: true,
         title: Column(

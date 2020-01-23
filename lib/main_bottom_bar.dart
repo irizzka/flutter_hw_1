@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hw_1/feed_widget.dart';
 import 'package:flutter_hw_1/main_cfg.dart';
 
 class MainBottomBar extends StatefulWidget {
@@ -23,7 +24,12 @@ class _MainBottomBarState extends State<MainBottomBar> {
               Icons.home,
               size: 30,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FeedWidget()),
+              );
+            },
           ),
           IconButton(
             icon: Icon(
@@ -52,7 +58,8 @@ class _MainBottomBarState extends State<MainBottomBar> {
               backgroundImage:
                     mainConfig.userAccount.accountAvatar,
             ),
-            onPressed: () {},
+            onPressed: () {
+            },
           ),
         ],
       ),

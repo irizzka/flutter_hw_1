@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hw_1/main.dart';
 import 'package:flutter_hw_1/main_cfg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -18,21 +19,62 @@ MainConfig mainConfig = MainConfig();
     'flutter',
     'workshop'
   ];
+  Icon heartInst = Icon(FontAwesomeIcons.heart);
 
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Hero(
-          //todo
-          child: Image.network('https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/5a604a76879045.5c76ccf6c985f.png',
-            fit: BoxFit.fitHeight,
-            width: double.infinity,
-            height: 300,
+        GestureDetector(
+          onTap: (){
+          //todo  print(ModalRoute.of(context).settings.name);
+            if(ModalRoute.of(context).settings.name == null){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyApp()),
+              );
+            }
+          },
+
+          child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+          children: <Widget>[
+            Image.network('https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/5a604a76879045.5c76ccf6c985f.png',
+                fit: BoxFit.fitHeight,
+                width: MediaQuery.of(context).size.width,
+                height: 300),
+            Container(
+              child: Image.network('https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/f1c7fc74565807.5c37135e961b7.png',
+                  fit: BoxFit.fitHeight,
+                   width: MediaQuery.of(context).size.width,
+                  height: 300),
+            ),
+
+          ])
           ),
-          tag: 12,
+          /*child: Row(
+             children: <Widget>[
+               Expanded(
+                 //todo
+                 child: Image.network('https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/5a604a76879045.5c76ccf6c985f.png',
+                   fit: BoxFit.fitHeight,
+                  // width: double.infinity,
+                   height: 300,
+                 ),
+               ),
+               Expanded(
+                 flex: 1,
+                 //todo
+                 child: Image.network('https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/f1c7fc74565807.5c37135e961b7.png',
+                   fit: BoxFit.fitHeight,
+                  // width: double.infinity,
+                   height: 300,
+                 ),
+               ),
+             ],
+          ),*/
         ),
 
         Container(
@@ -44,17 +86,25 @@ MainConfig mainConfig = MainConfig();
                 children: <Widget>[
                   IconButton(
 
-                    icon: Icon(FontAwesomeIcons.heart),
+                    icon: heartInst,
                     onPressed: () {
                       setState(() {
+                        //todo
+                        if(likedList.contains(mainConfig.userAccount.accountName)){
+                            likedList.remove(mainConfig.userAccount.accountName);
+                            heartInst = Icon(FontAwesomeIcons.heart);
+                        }else{
 
+                          likedList.add(mainConfig.userAccount.accountName);
+                          heartInst = Icon(FontAwesomeIcons.solidHeart, color: Colors.red,);
+                        }
                       });
                     },
                   ),
 
                   IconButton(icon: Icon(FontAwesomeIcons.comment), onPressed: () {},),
 
-                  IconButton(icon: Icon(FontAwesomeIcons.paperPlane), onPressed: () {},)
+                  IconButton(icon: Icon(FontAwesomeIcons.telegramPlane), onPressed: () {},)
                 ],
               ),
               Row(
@@ -77,9 +127,6 @@ MainConfig mainConfig = MainConfig();
               SizedBox(
                 width: 10,
               ),
-           //   Text(
-              //    'Liked by ${likedList.first} and ${likedList.length - 1} others'
-           //   ),
 
               RichText(
                 text:
@@ -101,7 +148,7 @@ MainConfig mainConfig = MainConfig();
                       ),
                       TextSpan(
                         //todo others
-                        text:' 44 others ',
+                        text:' ${likedList.length} ',
                         style: TextStyle(fontWeight: FontWeight.bold),
                         // navigate to desired screen
                       )
@@ -121,6 +168,12 @@ MainConfig mainConfig = MainConfig();
                    TextSpan(
                      text:'${mainConfig.p1.postDescription}',
                      style: TextStyle(fontWeight: FontWeight.normal),
+                     // navigate to desired screen
+                   ),
+                   TextSpan(
+                     //todo
+                     text:' Show more',
+                     style: TextStyle(fontWeight: FontWeight.normal, color: Colors.grey),
                      // navigate to desired screen
                    )
                  ]),
